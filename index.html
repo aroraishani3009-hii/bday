@@ -1,41 +1,60 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mom’s Birthday • Dynamic Site</title>
-  <link rel="stylesheet" href="/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mom's Birthday • Dynamic Site</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .fade-in {
+      animation: fadeIn 2s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
-  <header class="sticky top-0 bg-white/80 backdrop-blur z-50 border-b">
-    <nav class="max-w-5xl mx-auto flex items-center justify-between p-4">
-      <h1 class="font-semibold">Celebrating Mom</h1>
-    </nav>
+<body class="bg-gradient-to-r from-pink-100 via-yellow-100 to-red-100 min-h-screen text-gray-800 font-sans">
+
+  <header class="text-center py-10 fade-in">
+    <h1 class="text-5xl font-bold text-pink-600 animate-bounce">🎉 Celebrating Mom 🎉</h1>
+    <p class="text-xl mt-2 text-gray-700">26th • A Day of Love</p>
+    <p class="mt-4 text-lg">A dynamic page with memories, wishes, and surprise notes.</p>
   </header>
 
-  <section id="hero" class="min-h-screen grid place-items-center bg-gradient-to-b from-pink-100 to-indigo-100">
-    <div class="text-center space-y-3">
-      <h2 class="text-4xl md:text-6xl font-bold">26th • A Day of Love</h2>
-      <p class="text-lg text-gray-700">A dynamic page with memories, wishes, and surprise notes.</p>
-      <button id="loadCards" class="px-4 py-2 bg-indigo-600 text-white rounded">Load Memories</button>
-    </div>
+  <section class="flex justify-center mb-6">
+    <img src="images/mom-smile.jpg" alt="Mom smiling" class="rounded-xl shadow-lg w-80 hover:scale-105 transition-transform duration-300" />
   </section>
-  <div class="animate-bounce text-pink-600">Happy Birthday!</div>
 
-  <section id="cards" class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 p-6"></section>
+  <section class="text-center mb-10">
+    <button onclick="loadMemories()" class="bg-pink-500 text-white px-6 py-2 rounded-full shadow-md hover:bg-pink-600 transition duration-300">
+      Load Memories
+    </button>
+  </section>
 
-  <section id="contact" class="max-w-3xl mx-auto p-6 space-y-4">
-    <h3 class="text-2xl font-semibold">Send a message</h3>
-    <form id="contactForm" class="space-y-3">
-      <input name="name" placeholder="Your name" class="w-full border p-2 rounded" required>
-      <input name="email" type="email" placeholder="Email" class="w-full border p-2 rounded" required>
-      <textarea name="message" placeholder="Your message" class="w-full border p-2 rounded" required></textarea>
-      <button class="px-4 py-2 bg-pink-600 text-white rounded">Send</button>
-      <p id="status" class="text-sm text-gray-600"></p>
+  <section class="max-w-xl mx-auto bg-white p-6 rounded-lg shadow-lg fade-in">
+    <h2 class="text-2xl font-semibold mb-4 text-pink-700">Send a message</h2>
+    <form id="contactForm" class="space-y-4">
+      <input type="text" placeholder="Your name" class="w-full px-4 py-2 border rounded-md" />
+      <input type="email" placeholder="Email" class="w-full px-4 py-2 border rounded-md" />
+      <textarea placeholder="Your message" class="w-full px-4 py-2 border rounded-md"></textarea>
+      <button type="submit" class="bg-yellow-500 text-white px-6 py-2 rounded-full hover:bg-yellow-600 transition duration-300">
+        Send
+      </button>
     </form>
   </section>
 
-  <script type="module" src="/main.js"></script>
+  <script>
+    function loadMemories() {
+      alert("✨ Surprise memories loading…");
+      // You can replace this with actual fetch logic to your backend
+    }
+
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("🎈 Message sent! Mom will love it.");
+    });
+  </script>
 </body>
 </html>
-
