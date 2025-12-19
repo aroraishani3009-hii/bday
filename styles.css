@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Subtle card animation */
+.card {
+  transform: translateY(12px);
+  opacity: 0;
+  transition: transform 400ms ease, opacity 400ms ease;
+}
+.card.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
