@@ -17,29 +17,35 @@
 </head>
 <body class="bg-gradient-to-r from-pink-100 via-yellow-100 to-red-100 min-h-screen text-gray-800 font-sans">
 
+  <!-- Header -->
   <header class="text-center py-10 fade-in">
     <h1 class="text-5xl font-bold text-pink-600 animate-bounce">🎉 Celebrating Mom 🎉</h1>
-    <p class="text-xl mt-2 text-gray-700">26th Dec • A Day of Love</p>
+    <p class="text-xl mt-2 text-gray-700">26th Dec• A Day of Love</p>
   </header>
 
-  <section class="flex justify-center mb-6">
-    <img src="C:\Users\ARRORA\Desktop\ishani\surprise\bday" alt="Mom cycling" class="rounded-xl shadow-lg w-80 hover:scale-105 transition-transform duration-300" />
-  </section>
-
+  <!-- Load Memories Button -->
   <section class="text-center mb-10">
-    <button onclick="loadMemories()" class="bg-pink-500 text-white px-6 py-2 rounded-full shadow-md hover:bg-pink-600 transition duration-300">
+    <button onclick="loadMemories()" 
+            class="bg-pink-500 text-white px-6 py-2 rounded-full shadow-md hover:bg-pink-600 transition duration-300">
       Load Memories
     </button>
   </section>
 
+  <!-- Hidden Memories Gallery -->
+  <section id="memories" class="hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-6">
+    <img src="IMG_20171008_201543.jpg" alt="Memory 1" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300" />
+    <img src="IMG_20180120_222533.jpg" alt="Memory 2" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300" />
+    <img src="IMG_20181027_180356.jpg" alt="Memory 3" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300" />
+    <img src="IMG_20231203_203738.jpg" alt="Memory 3" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300" />
+  </section>
+
+  <!-- Script -->
   <script>
     function loadMemories() {
-      alert("✨ Surprise memories loading…");
-      // You can replace this with actual fetch logic to your backend
+      const gallery = document.getElementById("memories");
+      gallery.classList.remove("hidden");   // show the images
+      gallery.classList.add("fade-in");     // add animation
     }
   </script>
 </body>
 </html>
-
-
-
