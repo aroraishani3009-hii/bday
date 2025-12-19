@@ -13,6 +13,23 @@
       from { opacity: 0; }
       to { opacity: 1; }
     }
+    /* Lightbox styles */
+    #lightbox {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+    }
+    #lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #fff;
+    }
   </style>
 </head>
 <body class="bg-gradient-to-r from-pink-100 via-yellow-100 to-red-100 min-h-screen text-gray-800 font-sans">
@@ -20,7 +37,8 @@
   <!-- Header -->
   <header class="text-center py-10 fade-in">
     <h1 class="text-5xl font-bold text-pink-600 animate-bounce">🎉 Celebrating Mom 🎉</h1>
-    <p class="text-xl mt-2 text-gray-700">26th Dec• A Day of Love</p>
+    <p class="text-xl mt-2 text-gray-700">26th • A Day of Love</p>
+    <p class="mt-4 text-lg">A dynamic page with memories, wishes, and surprise notes.</p>
   </header>
 
   <!-- Load Memories Button -->
@@ -33,11 +51,15 @@
 
   <!-- Hidden Memories Gallery -->
   <section id="memories" class="hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-6">
-    <img src="IMG_20171008_201543.jpg" alt="Memory 1" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300" />
-    <img src="IMG_20180120_222533.jpg" alt="Memory 2" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300" />
-    <img src="IMG_20181027_180356.jpg" alt="Memory 3" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300" />
-    <img src="IMG_20231203_203738.jpg" alt="Memory 3" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300" />
+    <img src="IMG_20171008_201543.jpg" alt="Memory 1" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="openLightbox(this.src)" />
+    <img src="IMG_20180120_222533.jpg" alt="Memory 2" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="openLightbox(this.src)" />
+    <img src="IMG_20231203_203738.jpg" alt="Memory 3" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="openLightbox(this.src)" />
   </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="Expanded memory" />
+  </div>
 
   <!-- Script -->
   <script>
@@ -45,6 +67,15 @@
       const gallery = document.getElementById("memories");
       gallery.classList.remove("hidden");   // show the images
       gallery.classList.add("fade-in");     // add animation
+    }
+
+    function openLightbox(src) {
+      document.getElementById("lightbox-img").src = src;
+      document.getElementById("lightbox").style.display = "flex";
+    }
+
+    function closeLightbox() {
+      document.getElementById("lightbox").style.display = "none";
     }
   </script>
 </body>
