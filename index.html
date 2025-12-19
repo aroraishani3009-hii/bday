@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mom's Birthday • Dynamic Site</title>
+  <title>HAPPY BIRTHDAY</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
     .fade-in {
@@ -20,15 +20,24 @@
       width: 100%; height: 100%;
       background: rgba(0,0,0,0.8);
       display: none;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       z-index: 50;
+      color: white;
+      text-align: center;
+      padding: 20px;
     }
     #lightbox img {
       max-width: 90%;
-      max-height: 80%;
+      max-height: 70%;
       border-radius: 10px;
       box-shadow: 0 0 20px #fff;
+      margin-bottom: 20px;
+    }
+    #lightbox p {
+      font-size: 1.2rem;
+      font-weight: 500;
     }
   </style>
 </head>
@@ -38,7 +47,6 @@
   <header class="text-center py-10 fade-in">
     <h1 class="text-5xl font-bold text-pink-600 animate-bounce">🎉 Celebrating Mom 🎉</h1>
     <p class="text-xl mt-2 text-gray-700">26th • A Day of Love</p>
-    <p class="mt-4 text-lg">A dynamic page with memories, wishes, and surprise notes.</p>
   </header>
 
   <!-- Load Memories Button -->
@@ -51,14 +59,15 @@
 
   <!-- Hidden Memories Gallery -->
   <section id="memories" class="hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-6">
-    <img src="IMG_20171008_201543.jpg" alt="Memory 1" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="openLightbox(this.src)" />
-    <img src="IMG_20180120_222533.jpg" alt="Memory 2" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="openLightbox(this.src)" />
-    <img src="IMG_20231203_203738.jpg" alt="Memory 3" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="openLightbox(this.src)" />
+    <img src="IMG_20171008_201543.jpg" alt="Memory 1" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="openLightbox(this.src, 'Mom’s beautiful smile that lights up every room ❤️')" />
+    <img src="IMG_20180120_222533.jpg" alt="Memory 2" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="openLightbox(this.src, 'Our family trip — unforgettable moments together 🌸')" />
+    <img src="IMG_20231203_203738.jpg" alt="Memory 3" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="openLightbox(this.src, 'Birthday celebration full of love and laughter 🎂')" />
   </section>
 
   <!-- Lightbox -->
   <div id="lightbox" onclick="closeLightbox()">
     <img id="lightbox-img" src="" alt="Expanded memory" />
+    <p id="lightbox-msg"></p>
   </div>
 
   <!-- Script -->
@@ -69,8 +78,9 @@
       gallery.classList.add("fade-in");     // add animation
     }
 
-    function openLightbox(src) {
+    function openLightbox(src, message) {
       document.getElementById("lightbox-img").src = src;
+      document.getElementById("lightbox-msg").textContent = message;
       document.getElementById("lightbox").style.display = "flex";
     }
 
